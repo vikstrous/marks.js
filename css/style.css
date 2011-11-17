@@ -1,0 +1,4 @@
+.hidden { display:none; }
+#course-tabs li .ui-icon-plusthick { float: left; margin: 0.2em 0.2em 0.2em 0; cursor: pointer; }
+.right { float:right; }
+.clearfix { clear:both; }

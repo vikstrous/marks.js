@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<!--TODO: json2-->
+		<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
+		<script type="text/javascript" src="js/underscore-min.js"></script>
+		<script type="text/javascript" src="js/backbone-min.js"></script>
+		<script type="text/javascript" src="js/marks.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/start/jquery-ui-1.8.16.custom.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<title>Testing Marks.js</title>
+	</head>
+	<body>
+	
+	<div id="login" class="right">Login</div>
+	<div class="clearfix"></div>
+	
+	<div id="app"></div>
+	
+	<script type="text/template" id="app-template">
+		<div id="course-tabs">
+			<ul>
+			</ul>
+		</div>
+	</script>
+	
+	<script type="text/template" id="course-add-template">
+		<div id="course-add-tab" title="Add Course">
+			<form>
+				<fieldset class="ui-helper-reset">
+					<label for="course_code">Course Code</label>
+					<br/>
+					<input type="text" name="course_code" id="course_code" value="" class="ui-widget-content ui-corner-all" />
+					<br/>
+					<label for="course_name">Content</label>
+					<br/>
+					<input type="text" name="course_name" id="course_name" value="" class="ui-widget-content ui-corner-all"/>
+					<br/>
+					<input type="submit" value="Add Course" class="ui-widget-content ui-corner-all"/>
+				</fieldset>
+			</form>
+		</div>
+	</script>
+	
+	</body>
+</html>
