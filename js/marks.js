@@ -2,9 +2,6 @@
 //TODO: separate into multiple files?
 //TODO: use templating system from wattools
 
-//global
-selected_course = 0; //TODO: put inside data
-
 jQuery(function($){
 	
 	window.data = {};

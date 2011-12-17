@@ -23,7 +23,7 @@ function new_tab_form_submit(event) {
 	var $course_code = $( "#course_code" );
 	var $course_name = $( "#course_name" );
 	var course_code = $course_code.val() || "ECE100A";
-	selected_course = data.terms.at(0).courses.length;
+	data.terms.at(0).courses.selected = data.terms.at(0).courses.length;
 	data.terms.at(0).courses.add( new Course({
 		code: course_code,
 		name: $course_name.val() || "New Course"

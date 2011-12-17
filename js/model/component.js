@@ -8,5 +8,6 @@ window.Component = Backbone.Model.extend({
 });
 
 window.ComponentList = Backbone.Collection.extend({
+	selected: 0, //which component is currently visible
 	model: Component
 });

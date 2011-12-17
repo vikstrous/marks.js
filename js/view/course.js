@@ -45,6 +45,6 @@ window.CoursesView = Backbone.View.extend({
 		$tabs.tabs( "add", "#course-tab-" + this.collection.length, "<span class='ui-icon ui-icon-plusthick'>Add Course</span>");
 		
 		//select the right tab
-		$tabs.tabs( "select", selected_course );
+		$tabs.tabs( "select", this.collection.selected );
 	}
 });

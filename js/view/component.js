@@ -25,7 +25,6 @@ window.ComponentsView = Backbone.View.extend({
 		
 		//create the tabs
 		$tabs.tabs({
-			//selected: selected_course, // we can't do this because the tabs are not there yet
 			tabTemplate: "<li><a href='#{href}'>#{label}</a></li>",
 			add: _.bind(function( event, ui ){
 				if(ui.index == this.collection.length) {

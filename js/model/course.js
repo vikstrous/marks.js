@@ -8,5 +8,6 @@ window.Course = Backbone.Model.extend({
 });
 
 window.CourseList = Backbone.Collection.extend({
+	selected: 0, //which tab is selected
 	model: Course
 });
