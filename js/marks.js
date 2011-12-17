@@ -1,5 +1,3 @@
-//TODO: selected_course does work?
-//TODO: separate into multiple files?
 //TODO: use templating system from wattools
 
 jQuery(function($){
