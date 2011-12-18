@@ -1,12 +1,14 @@
 window.CourseView = Backbone.View.extend({
 	model: null,
 	tagName: 'div',
+	initialize: function(){
+		this.render();
+	},
 	render: function(){
-		$(this.el).empty().append("<p>").text("testing course:" + this.model.get('name'));
+		$(this.el).empty().append("<p>").text("Course Name: " + this.model.get('name')).append('<hr/>');
 		var $comp_list = $('<div>');
 		//render all components
 		this.components_view = new ComponentsView({el: $comp_list[0], collection: this.model.get('components')});
-		this.components_view.render();
 		$(this.el).append($comp_list);
 	}
 });
@@ -15,6 +17,10 @@ window.CoursesView = Backbone.View.extend({
 	collection: null,
 	course_views: null,
 	tagName: 'div',
+	initialize: function(){
+		this.collection.bind('add', this.render, this);
+		this.render();
+	},
 	render: function(){
 		// create the course views for each tab
 		this.course_views = [];
@@ -32,7 +38,6 @@ window.CoursesView = Backbone.View.extend({
 					draw_new_tab_form( event, ui );
 				} else {
 					this.course_views[ui.index] = new CourseView({el: ui.panel, model: this.collection.at(i)});
-					this.course_views[ui.index].render();
 				}
 			}, this),
 			select: _.bind(function(event, ui){

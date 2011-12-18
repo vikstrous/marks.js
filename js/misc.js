@@ -8,8 +8,6 @@ function new_component_form_submit(event) {
 		name: component_name,
 		weight: $component_weight.val() || 100
 	}) );
-	//TODO: remove need for explicit rerendering - update on change
-	app.render();
 }
 
 function draw_new_component_form ( event, ui ) {
@@ -27,11 +25,6 @@ function new_tab_form_submit(event) {
 		code: course_code,
 		name: $course_name.val() || "New Course"
 	}) );
-	//add one initial component to not break things
-	//data.terms.at(0).get('courses').last().components = new ComponentList();
-	//data.terms.at(0).get('courses').last().components.add( new Component() );
-	//TODO: remove need for explicit rerendering - update on change
-	app.render();
 }
 
 function draw_new_tab_form ( event, ui ) {

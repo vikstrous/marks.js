@@ -1,8 +1,11 @@
 window.ComponentView = Backbone.View.extend({
 	model: null,
 	tagName: 'div',
+	initialize: function(){
+		this.render();
+	},
 	render: function(){
-		$(this.el).empty().append("<p>").text("This component has weight: " + this.model.get('weight'));
+		$(this.el).empty().append("<p>").text("Weight: " + this.model.get('weight'));
 	}
 });
 
@@ -10,6 +13,10 @@ window.ComponentsView = Backbone.View.extend({
 	collection: null,
 	course_views: null,
 	tagName: 'div',
+	initialize: function(){
+		this.collection.bind('add', this.render, this);
+		this.render();
+	},
 	render: function(){
 		
 		// create the course views for each tab
@@ -18,7 +25,7 @@ window.ComponentsView = Backbone.View.extend({
 		var $el = $(this.el);
 		//TODO: unique id may be necessary!
 		var $tabs = $('<div class="component-tabs"><ul></ul></div>'); 
-		$el.append($tabs);
+		$el.empty().append($tabs);
 		
 		//create the tabs
 		$tabs.tabs({
@@ -28,7 +35,6 @@ window.ComponentsView = Backbone.View.extend({
 					draw_new_component_form( event, ui );
 				} else {
 					this.component_views[ui.index] = new ComponentView({el:  ui.panel, model: this.collection.at(i)});
-					this.component_views[ui.index].render();
 				}
 			}, this),
 			select: _.bind(function(event, ui){

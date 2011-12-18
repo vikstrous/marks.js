@@ -1,9 +1,9 @@
 window.Component = Backbone.Model.extend({
 	defaults: function() {
-	  return {
-		name:  'Component 1',
-		weight: 30
-	  };
+		return {
+			name:  'Untitled Component',
+			weight: 30
+		}
 	}
 });
 
