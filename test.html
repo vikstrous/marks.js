@@ -23,24 +23,17 @@
 	
 	<div id="app"></div>
 	
-	<script type="text/template" id="app-template">
-		<div id="course-tabs">
-			<ul>
-			</ul>
-		</div>
-	</script>
-	
 	<script type="text/template" id="course-add-template">
 		<div id="course-add-tab" title="Add Course">
 			<form>
 				<fieldset class="ui-helper-reset">
 					<label for="course_code">Course Code</label>
 					<br/>
-					<input type="text" name="course_code" id="course_code" value="" class="ui-widget-content ui-corner-all" />
+					<input type="text" name="course_code" class="course_code" value="" class="ui-widget-content ui-corner-all" />
 					<br/>
 					<label for="course_name">Course Name</label>
 					<br/>
-					<input type="text" name="course_name" id="course_name" value="" class="ui-widget-content ui-corner-all"/>
+					<input type="text" name="course_name" class="course_name" value="" class="ui-widget-content ui-corner-all"/>
 					<br/>
 					<input type="submit" value="Add Course" class="ui-widget-content ui-corner-all"/>
 				</fieldset>
@@ -54,11 +47,11 @@
 				<fieldset class="ui-helper-reset">
 					<label for="component_name">Component Name</label>
 					<br/>
-					<input type="text" name="component_name" id="component_name" value="" class="ui-widget-content ui-corner-all" />
+					<input type="text" name="component_name" class="component_name" value="" class="ui-widget-content ui-corner-all" />
 					<br/>
 					<label for="component_weight">Weight</label>
 					<br/>
-					<input type="text" name="component_weight" id="component_weight" value="" class="ui-widget-content ui-corner-all"/>
+					<input type="text" name="component_weight" class="component_weight" value="" class="ui-widget-content ui-corner-all"/>
 					<br/>
 					<input type="submit" value="Add Component" class="ui-widget-content ui-corner-all"/>
 				</fieldset>

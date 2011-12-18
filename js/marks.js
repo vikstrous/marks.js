@@ -5,12 +5,12 @@ jQuery(function($){
 	window.data = {};
 	data.terms = new TermList();
 	data.terms.add( new Term() );
-	data.terms.at(0).courses = new CourseList();
-	data.terms.at(0).courses.add( new Course() );
-	data.terms.at(0).courses.at(0).components = new ComponentList();
-	data.terms.at(0).courses.at(0).components.add( new Component() );
+	//data.terms.at(0).get('courses') = new CourseList();
+	//data.terms.at(0).get('courses').add( new Course() );
+	//data.terms.at(0).get('courses').at(0).components = new ComponentList();
+	//data.terms.at(0).get('courses').at(0).components.add( new Component() );
 
-	window.app = new CoursesView({el:$('#app'), collection: data.terms.at(0).courses});
+	window.app = new CoursesView({el:$('#app'), collection: data.terms.at(0).get('courses')});
 	
 	app.render();
 	

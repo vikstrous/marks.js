@@ -1,13 +1,13 @@
 window.CourseView = Backbone.View.extend({
 	model: null,
 	tagName: 'div',
-	render: function(ui){
-		$(ui).empty().append("<p>").text("testing course:" + this.model.get('name'));
+	render: function(){
+		$(this.el).empty().append("<p>").text("testing course:" + this.model.get('name'));
 		var $comp_list = $('<div>');
 		//render all components
-		this.components_view = new ComponentsView({el: $comp_list[0], collection: this.model.components });
+		this.components_view = new ComponentsView({el: $comp_list[0], collection: this.model.get('components')});
 		this.components_view.render();
-		$(ui).append($comp_list);
+		$(this.el).append($comp_list);
 	}
 });
 
@@ -16,25 +16,27 @@ window.CoursesView = Backbone.View.extend({
 	course_views: null,
 	tagName: 'div',
 	render: function(){
-		// copy in the template
-		$(this.el).empty().html($('#app-template').html());
-		
 		// create the course views for each tab
 		this.course_views = [];
-		for (var i=0; i < this.collection.length; i++){
-			this.course_views.push(new CourseView({model: this.collection.at(i)}));
-		}
+		
+		var $el = $(this.el);
+		//TODO: unique id may be necessary!
+		var $tabs = $('<div class="course-tabs"><ul></ul></div>'); 
+		$el.empty().append($tabs);
 		
 		//create the tabs
-		var $tabs = $('#course-tabs').tabs('destroy').tabs({
-			//selected: selected_course, // we can't do this because the tabs are not there yet
+		$tabs.tabs({
 			tabTemplate: "<li><a href='#{href}'>#{label}</a></li>",
 			add: _.bind(function( event, ui ){
 				if(ui.index == this.collection.length) {
 					draw_new_tab_form( event, ui );
 				} else {
-					this.course_views[ui.index].render( ui.panel );
+					this.course_views[ui.index] = new CourseView({el: ui.panel, model: this.collection.at(i)});
+					this.course_views[ui.index].render();
 				}
+			}, this),
+			select: _.bind(function(event, ui){
+				this.collection.selected = ui.index;
 			}, this)
 		});
 		

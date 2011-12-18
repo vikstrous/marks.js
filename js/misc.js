@@ -1,35 +1,36 @@
 function new_component_form_submit(event) {
 	event.preventDefault();
-	var $course_code = $( "#course_code" );
-	var $course_name = $( "#course_name" );
-	var course_code = $course_code.val() || "ECE100A";
-	selected_course = data.terms.at(0).courses.length;
-	data.terms.at(0).courses.add( new Course({
-		code: course_code,
-		name: $course_name.val() || "New Course"
+	var $component_name = $( ".component_name", this );
+	var $component_weight = $( ".component_weight", this );
+	var component_name = $component_name.val() || "New Component";
+	data.terms.at(0).get('courses').at(data.terms.at(0).get('courses').selected).get('components').selected = data.terms.at(0).get('courses').at(data.terms.at(0).get('courses').selected).get('components').length;
+	data.terms.at(0).get('courses').at(data.terms.at(0).get('courses').selected).get('components').add( new Component({
+		name: component_name,
+		weight: $component_weight.val() || 100
 	}) );
-	data.terms.at(0).courses.last().components = new ComponentList();
-	data.terms.at(0).courses.last().components.add( new Component() );
+	//TODO: remove need for explicit rerendering - update on change
 	app.render();
 }
 
 function draw_new_component_form ( event, ui ) {
-	$( ui.panel ).append( $('<div>').append($("#component-add-template").html()).submit(new_tab_form_submit));
+	$( ui.panel ).append( $('<div>').append($("#component-add-template").html()).submit(new_component_form_submit));
 	$("input:submit").button();
 }
-	
+
 function new_tab_form_submit(event) {
 	event.preventDefault();
-	var $course_code = $( "#course_code" );
-	var $course_name = $( "#course_name" );
+	var $course_code = $( ".course_code", this );
+	var $course_name = $( ".course_name", this );
 	var course_code = $course_code.val() || "ECE100A";
-	data.terms.at(0).courses.selected = data.terms.at(0).courses.length;
-	data.terms.at(0).courses.add( new Course({
+	data.terms.at(0).get('courses').selected = data.terms.at(0).get('courses').length;
+	data.terms.at(0).get('courses').add( new Course({
 		code: course_code,
 		name: $course_name.val() || "New Course"
 	}) );
-	data.terms.at(0).courses.last().components = new ComponentList();
-	data.terms.at(0).courses.last().components.add( new Component() );
+	//add one initial component to not break things
+	//data.terms.at(0).get('courses').last().components = new ComponentList();
+	//data.terms.at(0).get('courses').last().components.add( new Component() );
+	//TODO: remove need for explicit rerendering - update on change
 	app.render();
 }
 

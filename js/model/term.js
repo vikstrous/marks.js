@@ -1,7 +1,8 @@
 window.Term = Backbone.Model.extend({
 	defaults: function() {
 	  return {
-		name:  '1A'
+		name:  '1A',
+		courses: new CourseList()
 	  };
 	}
 });

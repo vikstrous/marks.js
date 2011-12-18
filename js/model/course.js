@@ -2,7 +2,8 @@ window.Course = Backbone.Model.extend({
 	defaults: function() {
 	  return {
 		code:  'XXX 123',
-		name:  'Default Course'
+		name:  'Default Course',
+		components: new ComponentList()
 	  };
 	}
 });
